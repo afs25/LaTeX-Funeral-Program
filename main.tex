@@ -5,8 +5,8 @@
 \usepackage{eso-pic, graphicx}
 \usepackage[margin=0.5in]{geometry}
 \geometry{
-  paperheight=8.5in,
-  paperwidth=5.5in,
+  paperheight=210mm,
+  paperwidth=147mm,
   heightrounded,
 }
 \usepackage{setspace}
@@ -14,8 +14,9 @@
 \usepackage{pgfornament}
 
 \usepackage{subcaption}
-
+\usepackage{transparent}
 \usepackage{verse}
+
 \newcommand{\attrib}[1]{%
 \nopagebreak{\raggedleft\footnotesize #1\par}}
 \renewcommand{\poemtitlefont}{\normalfont\large\itshape\centering}
@@ -30,22 +31,105 @@
  \put(\LenToUnit{\paperwidth},\LenToUnit{0\paperheight}){#1}%
  }}%
 
+\usetikzlibrary{chains, scopes}
 
 \begin{document}
+
+
+    \newcommand{\lleaf}{
+        \node [on chain, xshift=-0.22cm, yshift=-0.2cm] {
+            \begin{tikzpicture}
+                \node [rotate=-15] {\pgfornament[width=0.5cm]{1}};
+            \end{tikzpicture}
+        };
+    }
+
+    \newcommand{\linvleaf}{
+        \node [on chain, xshift=-0.22cm, yshift=0.2cm] {
+            \begin{tikzpicture}
+                \node [rotate=195] {\pgfornament[width=0.5cm, symmetry=v]{1}};
+            \end{tikzpicture}
+        };
+    }
+
+    \newcommand{\leaf}{
+        \node [on chain, xshift=-0.22cm, yshift=0.2cm] {
+            \begin{tikzpicture}
+                \node [rotate=-195] {\pgfornament[width=0.5cm]{1}};
+            \end{tikzpicture}
+        };
+    }
+
+    \newcommand{\invleaf}{
+        \node [on chain, xshift=-0.22cm, yshift=-0.2cm] {
+            \begin{tikzpicture}
+                \node [rotate=15] {\pgfornament[width=0.5cm, symmetry=v]{1}};
+            \end{tikzpicture}
+        };
+    }
+
+\newcommand{\leafline}{
+\tikzset{pgfornamentstyle/.style={%
+draw=black!90,inner sep=0pt,fill=black!90,
+fill opacity=1,scale=1,thin}}
+    \begin{tikzpicture}
+    \node[inner sep=0] (A) at (0,0){};
+    \coordinate (B) at (8,0);
+    {
+        [start chain,node distance=0,inner sep=0]
+        \lleaf
+        \linvleaf
+        \lleaf
+        \linvleaf
+        \lleaf
+        \linvleaf
+        \lleaf
+        \linvleaf
+        \lleaf
+        \linvleaf
+        \lleaf
+        \linvleaf
+    }
+    \end{tikzpicture}
+    \begin{tikzpicture}
+     \node [inner sep=0pt] at (0,0) {\includegraphics[width=0.8cm]{mother_black.png}};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+    \node[inner sep=0] (A) at (0,0){};
+    \coordinate (B) at (8,0);
+    {
+        [start chain,node distance=0,inner sep=0]
+        \leaf
+        \invleaf
+        \leaf
+        \invleaf
+        \leaf
+        \invleaf
+        \leaf
+        \invleaf
+        \leaf
+        \invleaf
+        \leaf
+        \invleaf
+    }
+    \end{tikzpicture}
+}
+
+
 \topskip0pt
 \vspace*{\fill}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=9cm]{pg1.png}
+\frame{\includegraphics[width=8cm]{pg1.png}}
 \end{figure}
 
 \begin{center}
-\pgfornament[width = 9cm, anchor=center, ydelta=0pt]{88}
+\leafline
 \end{center}
 
-{\centering \huge Arlene Naomi Cecila Lane \par}
-{\centering \Large December 16, 1935 -- May 24, 2018 \par} 
+{\centering \huge First name Last name \par}
+{\centering \Large December 00, 0000 -- May 00, 0000 \par}
 
 \vspace*{\fill}
 
@@ -57,45 +141,48 @@
 %   \AtPageLowerRight{\put(-42,21){\pgfornament[width=1.5cm,symmetry=c]{61}}}
 %}
 
-\AddToShipoutPictureBG*{%
-   \AtPageUpperLeft{\put(30,-51){\pgfornament[width=1.5cm]{61}}}
-   \AtPageUpperRight{\put(-72,-51){\pgfornament[width=1.5cm,symmetry=v]{61}}}
-   \AtPageLowerLeft{\put(30,51){\pgfornament[width=1.5cm,symmetry=h]{61}}}
-   \AtPageLowerRight{\put(-72,51){\pgfornament[width=1.5cm,symmetry=c]{61}}}
-}
+% \AddToShipoutPictureBG*{%
+%    \AtPageUpperLeft{\put(30,-51){\pgfornament[width=1.5cm]{61}}}
+%    \AtPageUpperRight{\put(-72,-51){\pgfornament[width=1.5cm,symmetry=v]{61}}}
+%    \AtPageLowerLeft{\put(30,51){\pgfornament[width=1.5cm,symmetry=h]{61}}}
+%    \AtPageLowerRight{\put(-72,51){\pgfornament[width=1.5cm,symmetry=c]{61}}}
+% }
 
 \newpage
 \topskip0pt
 \vspace*{\fill}
 
 \begin{figure}[h!]
-    \centering
-    \begin{subfigure}[c]{0.475\textwidth}
-        \centering
-        \includegraphics[height=0.43\textheight]{pg2-1.png}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[c]{0.475\textwidth}  
-        \centering 
-        \includegraphics[height=0.43\textheight]{pg2-2.png}
-    \end{subfigure}
-    \vskip\baselineskip
-    \begin{subfigure}[c]{0.475\textwidth}   
-        \centering 
-        \includegraphics[height=0.43\textheight]{pg2-3.png}
-    \end{subfigure}
-    \quad
-    \begin{subfigure}[c]{0.475\textwidth}   
-        \centering 
-        \includegraphics[height=0.43\textheight]{pg2-4.png}
-    \end{subfigure}
+\centering
+\frame{\includegraphics[width=5cm]{pg2.png}}
 \end{figure}
 
+\settowidth{\versewidth}{Who had found their common and mysterious home.}
+\begin{verse}[\versewidth]
+{\setstretch{1.4}\itshape
+In the orchestral largeness of his mind \\
+All contrary seekings their close kinship knew, \\
+Rich-hearted, wonderful to each other met, \\
+In the mutual marvelling of their myriad notes \\
+And dwelt like brothers of one family \\
+Who had found their common and mysterious home. \\
+As from the harp of some ecstatic god, \\
+There springs a harmony of lyric bliss \\
+Striving to leave no earthly joy unsung, \\
+Such was the life in that unbodied light. \\
+He seemed the wideness of a boundless sky, \\
+He seemed the passion of a sorrowless earth, \\
+He seemed the burning of a world-wide sun. \\
+}
+\end{verse}
+\attrib{Sri Aurobindo --- \emph{Savitri}}
+
+
 \AddToShipoutPictureBG*{%
-   \AtPageUpperLeft{\put(18,-72){\pgfornament[width=1.5cm]{41}}}
-   \AtPageUpperRight{\put(-61,-72){\pgfornament[width=1.5cm,symmetry=v]{41}}}
-   \AtPageLowerLeft{\put(18,60){\pgfornament[width=1.5cm,symmetry=h]{41}}}
-   \AtPageLowerRight{\put(-61,60){\pgfornament[width=1.5cm,symmetry=c]{41}}}
+   \AtPageUpperLeft{\put(18,-72){\pgfornament[width=1.5cm]{141}}}
+   \AtPageUpperRight{\put(-61,-72){\pgfornament[width=1.5cm,symmetry=v]{141}}}
+   \AtPageLowerLeft{\put(18,60){\pgfornament[width=1.5cm,symmetry=h]{141}}}
+   \AtPageLowerRight{\put(-61,60){\pgfornament[width=1.5cm,symmetry=c]{141}}}
 }
 
 \vspace*{\fill}
@@ -106,102 +193,95 @@
 \vspace*{\fill}
 
 \begin{center}
-\pgfornament[width = 3cm, anchor=center, ydelta=0pt]{72}
-\pgfornament[width = 3cm, anchor=center, ydelta=0pt]{75}
-\pgfornament[width = 3cm, anchor=center, ydelta=0pt]{73}
+\leafline
+
+
+{\setstretch{1.5}
+\vspace{1.5cm}
+{\huge Welcome}
+
+Mere Man Ke Andh Tamas Mein
+
+\vspace{1.5cm}
+{\huge Tributes}
+
+First Last name
+
+First Last name
+
+First Last name
+
+First Last name
+
+First Last name
+
+
+\vspace{1.5cm}
+{\huge Reflection}
+
+Guru Maat Pita Guru Bandhu Sakha
+
+Aum Namo Bhagavate Sri Aravindaya
+
+}
 \end{center}
 
-\vspace{0.5cm}
 
-\begin{tabular}{ l l }
-	Opening Remarks 				& Kathlene N. White -- Daughter \\ 
-    								& Joel A. Lane -- Son \\
-									& \\
-	Music Chorister 				& Valerie J. Lane -- Daughter \\
-	Pianist 						& By Invitation \\
-									& \\
-	Musical Interlude 				& ``My Way'' by Frank Sinatra \\
-	(Mom's All Time Favorite Song)  & \\
-									& \\
-	Invocation 						& Sean T. Lane -- Grandson \\
-									& \\
-	Poem Recitation 				& Heather K. White -- Granddaughter \\
-									& \\
-	Speakers 						& Christopher T. White -- Grandson \\
-									& Trevor A. Lane -- Grandson \\
-									& \\
-	Musical Interlude 				& ``Going Home'' performed by the \\
-									& Albeni Falls Pipers \\
-									& \\
-	Speaker 						& Valerie J. Lane -- Daughter \\
-									& \\
-	Eulogy 							& Kathlene N. White -- Daughter \\
-									& Joel A. Lane -- Son \\
-									& \\
-	Closing Hymn 					& ``God Be with You Till \\
-									& We Meet Again'' \\
-									& \\
-	Benediction 					& Kyle R. Lane -- Grandson \\
-	Recessional Music				& ``Amazing Grace'' performed by the \\
-									& Albeni Falls Pipers \\
-\end{tabular}
-
-\vspace{0.5cm}
-
-\begin{center}
-\pgfornament[width = 9cm, anchor=center, ydelta=0pt]{88}
-\end{center}
-
-\vspace*{\fill}
+% \vspace*{\fill}
 
 \AddToShipoutPictureBG*{%
 	\AtTextLowerLeft{%
 		\raisebox{.5\textheight}{%
 			\hspace*{.5\textwidth}%
-			\makebox[0pt]{\includegraphics[width=1.1\textwidth, height=1.05\textheight, valign=c]{pg3-bg.png}}%
+			\makebox[0pt]{{\transparent{0.35}\includegraphics[width=1.1\textwidth, valign=c]{watermark.png}}}%
 		}%
 	}%
 }
 
-\vspace*{\fill}
 
-\clearpage
+\vspace{1.5cm}
+
+\begin{center}
+\leafline
+\end{center}
+
+% \vspace*{\fill}
+
+% \clearpage
+\newpage
 \topskip0pt
 \vspace*{\fill}
 
-\poemtitle{To Those I Love and To Those Who Love Me}
-
-\settowidth{\versewidth}{I give you my love, for you can only guess}
-\begin{verse}[\versewidth]
-{\setstretch{1.6}
-When I am gone, release me, and let me go;\\
-I have so many things to see and do.\\
-You mustn't tie yourself to me with tears,\\
-Be happy we had so many years.\\
-I give you my love, for you can only guess \\
-How much you gave to me in happiness.\\
-I thank you for the love you have shown,\\
-But now it's time I travel alone.\\
-So grieve a while for me, if grieve you must,\\
-Then let your grief be comforted by trust.\\
-It's only for a while that we must part\\
-So bless the memories within your heart.\\
-I won't be far away for life goes on,\\
-So if you need me, call me, and I will be near.\\
-And if you listen with your heart, you'll hear\\
-All my love around you, soft and clear.\\
-And when you must come this way alone\\
-I'll greet you with a smile and ``Welcome Home.''\\
-}
-\end{verse}
-
-\AddToShipoutPictureBG*{%
-   \AtPageUpperLeft{\put(30,-51){\pgfornament[width=1.5cm]{61}}}
-   \AtPageUpperRight{\put(-72,-51){\pgfornament[width=1.5cm,symmetry=v]{61}}}
-   \AtPageLowerLeft{\put(30,51){\pgfornament[width=1.5cm,symmetry=h]{61}}}
-   \AtPageLowerRight{\put(-72,51){\pgfornament[width=1.5cm,symmetry=c]{61}}}
-}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=3.5cm]{aurobindo.png}
+\end{figure}
 
 \vspace*{\fill}
 
+\begin{figure}[h!]
+\centering
+\frame{\includegraphics[width=10cm]{pg4.jpg}}
+\end{figure}
+
+\begin{center}
+\huge{Be well, be happy.}
+\end{center}
+
+\vspace*{\fill}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=3cm]{mother.png}
+\end{figure}
+
+
+% \AddToShipoutPictureBG*{%
+%    \AtPageUpperLeft{\put(30,-51){\pgfornament[width=1.5cm]{61}}}
+%    \AtPageUpperRight{\put(-72,-51){\pgfornament[width=1.5cm,symmetry=v]{61}}}
+%    \AtPageLowerLeft{\put(30,51){\pgfornament[width=1.5cm,symmetry=h]{61}}}
+%    \AtPageLowerRight{\put(-72,51){\pgfornament[width=1.5cm,symmetry=c]{61}}}
+% }
+
+\vspace*{\fill}
 \end{document}
